@@ -53,7 +53,8 @@ export function compact(arr: Array<any>): Array<any> {
  *  _.head([1, 2, 3]) => 1
  *  _.head([]) => undefined
  */
-export function head() {
+export function head(arr: Array<any>): any {
+    return arr[0] || undefined;
 }
 
 /**
@@ -64,7 +65,8 @@ export function head() {
  *  _.initial<number>([1, 2, 3]) => [1, 2]
  *
  */
-export function initial() {
+export function initial(arr: Array<any>): Array<any> {
+    return arr.length ? arr.slice(0, arr.length - 1) : [];
 }
 
 /**
@@ -76,7 +78,8 @@ export function initial() {
  * _.last([]) => undefined
  *
  */
-export function last() {
+export function last(arr: Array<any>): any {
+    return arr.length ? arr[arr.length - 1] : undefined;
 }
 
 /**
