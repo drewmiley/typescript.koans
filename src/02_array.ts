@@ -21,7 +21,7 @@
  *  _.chunk(["a", "b", "c", "d"], 3) => [["a", "b", "c"], ["d"]]
  *  _.chunk(["a", "b", "c"]) => [["a"], ["b"], ["c"]]
  * */
-export function chunk(arr: Array, splitSize: Number | 1) {
+export function chunk(arr: Array<any>, splitSize: number | 1) {
     return arr.slice(0, splitSize);
 }
 
