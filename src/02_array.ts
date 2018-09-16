@@ -178,7 +178,7 @@ export interface FindIndexPredicate<T> {
  *
  */
 export function findIndex(arr: Array<T>, predicate: FindIndexPredicate<T>, index = 0): number {
-    return -1;
+    return arr.slice(index).indexOf(arr.slice(index).filter(predicate)[0]) + index;
 }
 
 /**
