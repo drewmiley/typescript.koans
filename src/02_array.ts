@@ -155,7 +155,8 @@ export function dropRightWhile<T>(collection: Array<T>, predicate: DropWhilePred
  * ## Examples
  * _.fill<any>([4, 6, 8, 10], "* ", 1, 3) => [4, "* ", "* ", 10]
  */
-export function fill() {
+export function fill(arr: Array<any>, value: any, start: number, end: number): Array<any> {
+    return arr.map((d, i) => (i >= start && i < end) ? value : d);
 }
 
 // Here we define an interface for the predicate used in the findIndex function.
