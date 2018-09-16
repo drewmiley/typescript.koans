@@ -177,7 +177,7 @@ export interface FindIndexPredicate<T> {
  * _.findIndex([4, 6, 6, 8, 10], value => value === 6, 2) => 2
  *
  */
-export function findIndex(arr: Array<T>, predicate: FindIndexPredicate<T>, index = 0): number {
+export function findIndex<T>(arr: Array<T>, predicate: FindIndexPredicate<T>, index = 0): number {
     return arr.slice(index).indexOf(arr.slice(index).filter(predicate)[0]) + index;
 }
 
@@ -193,7 +193,9 @@ export function findIndex(arr: Array<T>, predicate: FindIndexPredicate<T>, index
  * _.findLastIndex([4, 6, 6, 8, 10], value => value === 6, 1) => 1
  *
  */
-export function findLastIndex() {
+export function findLastIndex<T>(arr: Array<T>, predicate: FindIndexPredicate<T>, index = 0): number {
+    // TODO
+    return arr.slice(index).indexOf(arr.slice(index).filter(predicate)[arr.slice(index).filter(predicate).length - 1]) + index;
 }
 
 /**
@@ -207,7 +209,8 @@ export function findLastIndex() {
  * _.nth<number>([1, 2, 3]) => 1
  *
  */
-export function nth() {
+export function nth<T>(arr: Array<T>, index = 0): T {
+    return arr[index];
 }
 
 /**
@@ -217,5 +220,6 @@ export function nth() {
  * // We can also use something called "union types" here.
  * _.zip<string | number | boolean>(["a", "b"], [1, 2], [true, false]) => [["a", 1, true], ["b", 2, false]]
  */
-export function zip() {
+export function zip<T, U, V>(arr1: Array<T>, arr2: Array<U>, arr3: Array<V>): Array<Array<T|U|V>> {
+    return arr1.map((d, i) => [arr1[i], arr2[i], arr3[i]]);
 }
