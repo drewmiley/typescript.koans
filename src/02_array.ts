@@ -21,8 +21,11 @@
  *  _.chunk(["a", "b", "c", "d"], 3) => [["a", "b", "c"], ["d"]]
  *  _.chunk(["a", "b", "c"]) => [["a"], ["b"], ["c"]]
  * */
-export function chunk(arr: Array<any>, splitSize: number | 1) {
-    return arr.slice(0, splitSize);
+export function chunk(arr: Array<any>, splitSize = 1) {
+    return Array.apply(null, Array(Math.ceil(arr.length / splitSize)).map(d => d))
+        .map((d, i) => {
+            return arr.slice(i * splitSize, (i + 1) * splitSize);
+        });
 }
 
 /**
