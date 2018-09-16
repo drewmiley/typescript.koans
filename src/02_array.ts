@@ -123,6 +123,11 @@ interface DropWhilePredicate<T> {
 *
 */
 export function dropWhile<T>(collection: Array<T>, predicate: DropWhilePredicate<T>): Array<T> {
+    let result = collection;
+    while (predicate(result[0])) {
+        result = drop(result);
+    }
+    return result;
 }
 
 /**
@@ -134,7 +139,12 @@ export function dropWhile<T>(collection: Array<T>, predicate: DropWhilePredicate
  * _.dropRightWhile([5, 4, 3, 2, 1], value => value < 3) => [5, 4, 3]
  *
  */
-export function dropRightWhile() {
+export function dropRightWhile<T>(collection: Array<T>, predicate: DropWhilePredicate<T>): Array<T> {
+    let result = collection;
+    while (predicate(result[result.length - 1])) {
+        result = dropRight(result);
+    }
+    return result;
 }
 
 /**
