@@ -160,7 +160,8 @@ export function fill(arr: Array<any>, value: any, start: number, end: number): A
 }
 
 // Here we define an interface for the predicate used in the findIndex function.
-export interface FindIndexPredicate {
+export interface FindIndexPredicate<T> {
+  (value?: T, index?: number, collection?: Array<T>): boolean;
 }
 
 /**
@@ -176,7 +177,8 @@ export interface FindIndexPredicate {
  * _.findIndex([4, 6, 6, 8, 10], value => value === 6, 2) => 2
  *
  */
-export function findIndex() {
+export function findIndex(arr: Array<T>, predicate: FindIndexPredicate<T>, index = 0): number {
+    return -1;
 }
 
 /**
