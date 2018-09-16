@@ -21,7 +21,7 @@
  *  _.chunk(["a", "b", "c", "d"], 3) => [["a", "b", "c"], ["d"]]
  *  _.chunk(["a", "b", "c"]) => [["a"], ["b"], ["c"]]
  * */
-export function chunk(arr: Array<any>, splitSize = 1) {
+export function chunk(arr: Array<any>, splitSize = 1): Array<Array<any>> {
     return Array.apply(null, Array(Math.ceil(arr.length / splitSize)).map(d => d))
         .map((d, i) => {
             return arr.slice(i * splitSize, (i + 1) * splitSize);
@@ -41,7 +41,8 @@ export function chunk(arr: Array<any>, splitSize = 1) {
  * _.compact([1, 0, 2, 0, 3]) => [1, 2, 3]
  * _.compact([1, undefined, NaN, null, 0, 2, 3]) => [1, 2, 3]
  */
-export function compact() {
+export function compact(arr: Array<any>): Array<any> {
+    return arr.filter(Boolean);
 }
 
 /**
