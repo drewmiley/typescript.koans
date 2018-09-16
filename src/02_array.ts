@@ -92,7 +92,8 @@ export function last(arr: Array<any>): any {
  * _.drop([1, 2, 3, 4], 2) => [3, 4]
  * _.drop([1, 2, 3, 4]) => [2, 3, 4]
  */
-export function drop() {
+export function drop(arr: Array<any>, count = 1): Array<any> {
+    return arr.length >= count ? arr.slice(count, arr.length) : [];
 }
 
 /**
@@ -105,7 +106,8 @@ export function drop() {
  * _.dropRight([1, 2, 3, 4]) => [1, 2, 3]
  *
  */
-export function dropRight() {
+export function dropRight(arr: Array<any>, count = arr.length - 1): Array<any> {
+    return arr.length >= count ? arr.slice(0, count) : [];
 }
 
 interface DropWhilePredicate<T> {
