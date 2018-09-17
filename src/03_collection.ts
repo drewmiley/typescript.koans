@@ -67,7 +67,10 @@ interface EveryIteratee<T> {
  *  _.every([true, 1, null, 'yes'], Boolean); => false
  *  _.every([null, null, null], (value, index, collection) => value === null); => true
  */
-export function every() {
+export function every<T>(collection: Array<T>|Dictionary<T>: iteratee: EveryIteratee<T>): boolean {
+    return collection instanceof Array ?
+        collection.filter(iteratee).length > 0 :
+        Object.keys(collection).filter(key => iteratee(collection[key], key, collection)).length > 0;
 }
 
 /**
@@ -91,7 +94,11 @@ export function every() {
  *  _.filter<number>(collection, iteratee) => { 'a': 1, 'c': 3 }
  *
  */
-export function filter() {
+export function filter(collection: Array<T>|Dictionary<T>: iteratee: EveryIteratee<T>): Array<T>|Dictionary<T> {
+    return collection instanceof Array ?
+        collection.filter(iteratee) :
+        Object.keys(collection).filter(key => iteratee(collection[key], key, collection))
+            .reduce((res, key) => (res[key] = collection[key], res), {} );
 }
 
 /**

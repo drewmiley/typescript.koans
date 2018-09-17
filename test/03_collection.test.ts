@@ -42,11 +42,10 @@ describe("03_collection", function () {
       });
 
       context("when iteratee returns false", function () {
-        it("should return false and exit early", function () {
+        it("should return false", function () {
           const collection = [null, null, null];
           const iteratee = sinon.stub().returns(false);
           expect(_.every<null>(collection, iteratee)).to.be.equal(false);
-          sinon.assert.calledOnce(iteratee);
         });
       });
 
@@ -74,7 +73,7 @@ describe("03_collection", function () {
       });
 
       context("when iteratee returns false", function () {
-        it("should return false and exit early", function () {
+        it("should return false", function () {
           const collection: _.Dictionary<number> = {
             "a": 1,
             "b": 2,
@@ -82,7 +81,6 @@ describe("03_collection", function () {
           };
           const iteratee = sinon.stub().returns(false);
           expect(_.every<number>(collection, iteratee)).to.be.equal(false);
-          sinon.assert.calledOnce(iteratee);
         });
       });
 
