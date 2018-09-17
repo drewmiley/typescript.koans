@@ -146,5 +146,13 @@ export function map<T>(collection: Array<T>|Dictionary<T>, iteratee: ArrayForEac
  *    }, {}); => { '1': ['a', 'c'], '2': ['b'] }
  *
  */
-export function reduce() {
+interface ReduceIteratee<T> {
+    (accumulator?: T, value?: T, index?: number|string, collection?: Array<T>|Dictionary<T>): any;
+}
+
+export function reduce<T>(collection: Array<T>|Dictionary<T>, iteratee: ReduceIteratee<T>): any {
+    return collection instanceof Array ?
+        collection.reduce(iteratee) :
+        // TODO
+        collection.reduce(iteratee);
 }
