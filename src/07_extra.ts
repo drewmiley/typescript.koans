@@ -8,7 +8,8 @@
 
 // ### join
 // Converts all elements in array into a string separated by separator.
-export function join() {
+export function join<T>(arr: Array<T>, separator: string): string {
+	return arr.join(separator);
 }
 
 // ### ary
