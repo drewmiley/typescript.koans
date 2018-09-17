@@ -45,7 +45,14 @@ interface DictionaryForEachIteratee<T> {
  *  _.forEach(collection, iteratee); => result === [['0', 'first'], ['1', 'second'], ['2', 'thidrd']];
  *
  */
-export function forEach() {
+export function forEach<T>(collection: Array<T>|Dictionary<T>, iteratee: ArrayForEachIteratee<T>|DictionaryForEachIteratee<T>): Array<Array<any, T>> {
+    let result = [];
+    if (collection instanceof Array) {
+        collection.forEach((d, i) => result.push(iteratee(d, i, collection)));
+    } else {
+        Object.keys(collection).forEach(key => result.push(iteratee(collection[key], key, collection)))
+    }
+    return result;
 }
 
 interface EveryIteratee<T> {
