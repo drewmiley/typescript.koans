@@ -46,13 +46,9 @@ interface DictionaryForEachIteratee<T> {
  *
  */
 export function forEach<T>(collection: Array<T>|Dictionary<T>, iteratee: ArrayForEachIteratee<T>|DictionaryForEachIteratee<T>): Array<Array<any, T>> {
-    let result = [];
-    if (collection instanceof Array) {
-        collection.forEach((d, i) => result.push(iteratee(d, i, collection)));
-    } else {
-        Object.keys(collection).forEach(key => result.push(iteratee(collection[key], key, collection)))
-    }
-    return result;
+    return collection instanceof Array ?
+        collection.map(iteratee) :
+        Object.keys(collection).map(key => iteratee(collection[key], key, collection));
 }
 
 interface EveryIteratee<T> {
