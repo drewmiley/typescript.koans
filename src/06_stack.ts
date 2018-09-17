@@ -24,7 +24,22 @@ interface IStack <T> {
   toArray (): Array<T>;
 }
 
-export class Stack {
+export class Stack<T> implements IStack<T> {
+    size = 1;
+
+    push(value: T) {}
+
+    pop() {
+        return null;
+    }
+
+    peek() {
+        return null;
+    }
+
+    toArray() {
+        return [];
+    }
 }
 
 interface IStackFrame <T> {
@@ -33,8 +48,30 @@ interface IStackFrame <T> {
   toArray (): Array<T>;
 }
 
-class StackFrame {
+class StackFrame<T> implements IStackFrame<T> {
+    value() {
+        return null;
+    }
+
+    next() {
+        return this;
+    }
+
+    toArray() {
+        return [];
+    }
 }
 
-class LastStackFrame {
+class LastStackFrame<T> implements IStackFrame<T> {
+    value() {
+        return null;
+    }
+
+    next() {
+        return this;
+    }
+
+    toArray() {
+        return [];
+    }
 }
