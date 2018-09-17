@@ -18,60 +18,72 @@
 interface IStack <T> {
   size: number;
 
-  push (value: T): void;
-  pop (): T;
-  peek (): T;
-  toArray (): Array<T>;
+  push(value: T): void;
+  pop(): T;
+  peek(): T;
+  toArray(): Array<T>;
 }
 
 export class Stack<T> implements IStack<T> {
+    private head: LastStackFrame<T> = new LastStackFrame<T>();
+
     size = 1;
 
-    push(value: T) {}
+    push(value: T) {
+        this.head = this.head.push(value);
+    }
 
     pop() {
-        return null;
+        const value = this.head.value;
+        this.head = this.head.next;
+        return value;
     }
 
     peek() {
-        return null;
+        const value = this.head.value;
+        return value;
     }
 
     toArray() {
-        return [];
+        return this.head.toArray();
     }
 }
 
 interface IStackFrame <T> {
   value: T;
   next: IStackFrame<T>;
-  toArray (): Array<T>;
+  toArray(): Array<T>;
+
+  push(value: T): IStackFrame<T>;
 }
 
 class StackFrame<T> implements IStackFrame<T> {
-    value() {
-        return null;
-    }
+    public value: T;
+    public next: LastStackFrame<T> = new LastStackFrame<T>();
 
-    next() {
-        return this;
+    constructor (value: T) {
+      this.value = value;
     }
 
     toArray() {
-        return [];
+        return [this.value, ...this.next.toArray()];
+    }
+
+    push(value: T) {
+        this.next = this.next.push(value);
+        return this;
     }
 }
 
 class LastStackFrame<T> implements IStackFrame<T> {
-    value() {
-        return null;
-    }
-
-    next() {
-        return this;
-    }
+    public value: T = null;
+    public next: TailQueueItem<T> = this;
 
     toArray() {
         return [];
+    }
+
+    push(value: T) {
+        return new StackFrame<T>(value);
     }
 }
