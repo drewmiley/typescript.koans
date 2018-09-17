@@ -77,7 +77,7 @@ class StackFrame<T> implements IStackFrame<T> {
 
 class LastStackFrame<T> implements IStackFrame<T> {
     public value: T = null;
-    public next: TailQueueItem<T> = this;
+    public next: LastStackFrame<T> = this;
 
     toArray() {
         return [];
