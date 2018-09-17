@@ -120,7 +120,10 @@ export function filter(collection: Array<T>|Dictionary<T>: iteratee: EveryIterat
  *
  *  _.map<number>(collection, iteratee) => [[1,'a'], [2, 'b']]
  */
-export function map() {
+export function map<T>(collection: Array<T>|Dictionary<T>, iteratee: ArrayForEachIteratee<T>|DictionaryForEachIteratee<T>): Array<T>|Array<Array<any>> {
+    return collection instanceof Array ?
+        collection.map(iteratee) :
+        Object.keys(collection).map(key => iteratee(collection[key], key, collection));
 }
 
 /**
