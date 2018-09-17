@@ -139,9 +139,9 @@ describe("02_array", function () {
       });
     });
 
-    context("when startIndex > index of first match", function () {
+    context("when startIndex <= index of first match", function () {
       it("should return index of second match", function () {
-        expect(_.findLastIndex([ 4, 6, 6, 8, 10 ], value => value === 6, 1)).to.be.equal(1);
+        expect(_.findLastIndex([ 4, 6, 6, 8, 10 ], value => value === 6, 1)).to.be.equal(2);
       });
     });
   });

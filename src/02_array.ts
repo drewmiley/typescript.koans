@@ -190,12 +190,12 @@ export function findIndex<T>(arr: Array<T>, predicate: FindIndexPredicate<T>, in
  * _.findLastIndex([4, 6, 8, 10], () => false) => -1
  * _.findLastIndex([4, 6, 8, 10], value => value === 6) => 1
  * _.findLastIndex([4, 6, 8, 6, 10], value => value === 6) => 3
- * _.findLastIndex([4, 6, 6, 8, 10], value => value === 6, 1) => 1
+ * _.findLastIndex([4, 6, 6, 8, 10], value => value === 6, 1) => 2
  *
  */
 export function findLastIndex<T>(arr: Array<T>, predicate: FindIndexPredicate<T>, index = 0): number {
-    // TODO
-    return arr.slice(index).indexOf(arr.slice(index).filter(predicate)[arr.slice(index).filter(predicate).length - 1]) + index;
+    return arr.map((d, i) => (predicate(d, i, arr) && i >= index) ? i : -1)
+        .reduce((a, b) => Math.max(a, b));
 }
 
 /**
