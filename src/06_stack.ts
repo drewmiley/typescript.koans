@@ -27,7 +27,7 @@ interface IStack <T> {
 export class Stack<T> implements IStack<T> {
     private head: LastStackFrame<T> = new LastStackFrame<T>();
 
-    size = 1;
+    size = this.toArray().length;
 
     push(value: T) {
         this.head = this.head.push(value);
