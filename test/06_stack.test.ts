@@ -115,10 +115,10 @@ describe("06_stack", function () {
         expect(stack.size).to.be.equal(0);
 
         stack.push(1);
-        expect(stack.size).to.be.equal(1);
+        expect(stack.toArray().length).to.be.equal(1);
 
         stack.push(1);
-        expect(stack.size).to.be.equal(2);
+        expect(stack.toArray().length).to.be.equal(2);
       });
     });
 
@@ -128,16 +128,16 @@ describe("06_stack", function () {
         stack.push(1);
         stack.push(1);
         stack.push(1);
-        expect(stack.size).to.be.equal(3);
+        expect(stack.toArray().length).to.be.equal(3);
 
         stack.pop();
-        expect(stack.size).to.be.equal(2);
+        expect(stack.toArray().length).to.be.equal(2);
 
         stack.pop();
-        expect(stack.size).to.be.equal(1);
+        expect(stack.toArray().length).to.be.equal(1);
 
         stack.pop();
-        expect(stack.size).to.be.equal(0);
+        expect(stack.toArray().length).to.be.equal(0);
       });
     });
   });
