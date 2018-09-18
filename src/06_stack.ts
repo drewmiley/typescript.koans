@@ -66,7 +66,7 @@ class StackFrame<T> implements IStackFrame<T> {
     }
 
     toArray() {
-        return [this.value, ...this.next.toArray()];
+        return [...this.next.toArray(), this.value];
     }
 
     push(value: T) {
