@@ -42,8 +42,7 @@ export class Stack<T> implements IStack<T> {
     }
 
     peek() {
-        const value = this.head.value;
-        return value;
+        return this.head.value;
     }
 
     toArray() {
@@ -68,12 +67,13 @@ class StackFrame<T> implements IStackFrame<T> {
     }
 
     toArray() {
-        return [...this.next.toArray(), this.value];
+        return [this.value, ...this.next.toArray()];
     }
 
     push(value: T) {
-        this.next = this.next.push(value);
-        return this;
+        let next = new StackFrame<T>(value);
+        next.next = this;
+        return next;
     }
 }
 
